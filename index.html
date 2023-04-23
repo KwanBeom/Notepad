@@ -10,16 +10,24 @@
 </head>
 <body>
     <main>
-        <section>
+        <section class="write-section">
             <input type="text" class="title" placeholder="제목을 입력해주세요">
             <div id="editor"></div>
             <button type="submit" class="memo-btn" onclick="post()">작성하기</button>
         </section>
-        <section class="savememo-section">
-            메모 섹션
+        <section class="memo-section">
+            <header>
+                <p>오래된 순</p>
+                <div class="onf-switch">
+                    <span class="onf-btn"></span>
+                </div>
+                <button type="reset">모두 삭제</button>
+            </header>
+            <div class="savememo-section">
+
+            </div>
         </section>
     </main>
-    
 
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script><script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script src="./memo.js"></script>

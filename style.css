@@ -1,17 +1,147 @@
+h3, p{
+    padding:0;
+    margin: 0;
+}
 body{
     padding: 0;
     margin: 0;
 }
 button{
+    padding: 0;
     border: 0;
     background-color: initial;
+}
+input{
+    padding: 0;
+    border:0;
+}
+
+
+
+#editor{
+    background-color: #fff;
+    border-radius: 10px;
+}
+main{
+    padding: 1vw min(30px, 3vw);
+    background: rgb(220, 195, 255);
+    min-height: 100vh
 }
 .title{
     width: 100%;
     padding: 30px;
-    font-size: min(2vw, 30px);
+    font-size: min(4vw, 30px);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.memo-btn{
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0 20px;
+    width: 100%;
+    height: min(70px, 8vw);
+    background-color: #8686ff;
+    border-radius: 10px;
+    box-shadow: 0 5px 2px rgba(0,0,0,0.3);
+    transition: .2s;
+    cursor: pointer;
 }
 .memo-btn:active{
-    background-color: green;
-    border: 1px solid #000;
+    transform: translateY(5px);
+    box-shadow: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+
+.memo-section{
+    background:white;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+.memo-section header{
+    display:flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+.memo-wrap{
+    background-color: #ffd767;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 5px 5px 0 gray;
+}
+.memo-wrap:not(:last-child){
+    margin-bottom: 20px;
+}
+.memo-wrap header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.memo-wrap .del-btn{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #dd5347;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.memo-wrap .del-btn:hover{
+    background: #f51d00;
+}
+
+
+.wrapper {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.onf-switch {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 58px;
+    height: 28px;
+    background: #fff;
+    border: 2px solid #daa;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.onf-switch:hover {
+    background: rgba(255,0,0,0.1)
+}
+
+.onf-btn {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #daa;
+    transition: 0.2s;
+}
+
+.onf-switch.on{
+    background-color: rgba(255,0,0,0.3);
+}
+
+
+.onf-switch.on .onf-btn{
+    left: 34px;
+    background: #fff;
+    box-shadow: 1px 2px 3px #00000020;
+    background-color: rgba(255,0,0,0.3);
 }
