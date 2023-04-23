@@ -80,7 +80,7 @@ function idxSet(){
     })
 }
 
-// 배열 삭제해서 리턴해주는 함수
+// 이벤트 리스너 target과 조건문 이용해서 함수 실행해주는 이벤트
 memoSection.addEventListener("click", function(e){
     if(e.target.dataset.val !== undefined){
         dele(e.target.dataset.val)
@@ -90,7 +90,7 @@ memoSection.addEventListener("click", function(e){
     idxSet()
 })
 
-
+// filter 메서드 이용 배열 삭제해서 리턴해주는 함수
 function dele(val) {
     allMemo = allMemo.filter(item => {
         return item.val != val
@@ -116,11 +116,3 @@ resetBtn.onclick = () => {
     localStorage.setItem('allMemo', JSON.stringify(allMemo))
     memoSection.innerHTML = ''
 }
-
-
-
-
-
-
-
-
