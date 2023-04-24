@@ -119,8 +119,6 @@ function edit(clickedItem){
     titleText.value = clickedItem.target.parentNode.querySelector('header h3').textContent
     editor.setHTML(clickedItem.target.parentNode.querySelector('.memo-wrap .main-text').innerHTML) 
     allMemo.splice(Number(clickedItem.target.dataset.editval), 1)
-    console.log(editor)
-    //.setHTML(event.target.querySelector(".content").innerHTML)
 }
 
 // onoff 스위치로 클릭시 최신, 오래된 순 정렬하는 이벤트
