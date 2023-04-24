@@ -206,6 +206,10 @@ main{
     box-shadow: 2px 2px 0 gray;
     cursor: pointer;
 }
+.memo-wrap .edit-btn:active{
+    transform: translateY(1px);
+    box-shadow: 2px 2px 5px gray;
+}
 
 .memo-wrap .main-text{
     min-height: 150px;
