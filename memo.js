@@ -50,7 +50,13 @@ function inputMemo(){
         {...memo} = {
             title: titleText.value, 
             posttext: postText.innerHTML, 
-            time: `${d.getFullYear()}년 ${((d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1)}월 ${d.getDate()}일 ${d.getHours()}시${(d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes())}분`, 
+            time: `
+                ${d.getFullYear()}년
+                ${((d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1)}월
+                ${(d.getDate() < 10 ? '0' + d.getDate() : d.getDate())}일
+                ${(d.getHours() < 10 ? '0' + d.getHours() : d.getHours())}시
+                ${(d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes())}분
+                `,
             val: 0
         }
 
@@ -80,10 +86,8 @@ function paintMemo(){
             <button type="button" class="edit-btn" data-editval="${idx}">수정</button>
         </article>
         `
-        )
-        
+        )  
     })
-
 }
 
 // 순서대로 allMemo 배열 val키에 index 값 넣어주는 함수
@@ -103,6 +107,9 @@ memoSection.addEventListener("click", function(e){
     }
     if(e.target.classList.value === "edit-btn"){
         edit(e)
+        memoSection.innerHTML = ''
+        idxSet()
+        paintMemo()
     }    
 })
 
@@ -116,9 +123,13 @@ function dele(val) {
 
 // 수정 버튼 눌렀을 시 값 가져오고 메모 배열에서 삭제하는 함수
 function edit(clickedItem){
-    titleText.value = clickedItem.target.parentNode.querySelector('header h3').textContent
-    editor.setHTML(clickedItem.target.parentNode.querySelector('.memo-wrap .main-text').innerHTML) 
-    allMemo.splice(Number(clickedItem.target.dataset.editval), 1)
+    if(titleText.value === '' && postText.innerText === ''){
+        titleText.value = clickedItem.target.parentNode.querySelector('header h3').textContent
+        editor.setHTML(clickedItem.target.parentNode.querySelector('.memo-wrap .main-text').innerHTML) 
+        allMemo.splice(Number(clickedItem.target.dataset.editval), 1)
+    }else{
+        alert("현재 작성중인 메모를 작성해주세요!")
+    }
 }
 
 // onoff 스위치로 클릭시 최신, 오래된 순 정렬하는 이벤트

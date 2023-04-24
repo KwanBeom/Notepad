@@ -31,11 +31,12 @@ h2{
 #editor{
     background-color: #fff;
     border-radius: 10px;
+    border: 1px solid #000;
 }
 main{
-    padding: 10px min(30px, 10vw);
+    padding: 10px max(100px, 15%);
     background: rgb(220, 195, 255);
-    min-height: 100vh
+    min-height: 100vh;
 }
 .title{
     width: 100%;
@@ -43,6 +44,8 @@ main{
     font-size: min(4vw, 30px);
     margin-bottom: 10px;
     border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: 2px 2px gray;
     box-sizing: border-box;
 }
 
@@ -53,12 +56,13 @@ main{
     font-weight: bold;
     margin: 10px 0 20px;
     width: 100%;
-    height: min(70px, 8vw);
+    height: min(70px, 10vw);
     background-color: #8686ff;
     border-radius: 10px;
     box-shadow: 0 5px 2px rgba(0,0,0,0.3);
     transition: .1s;
     cursor: pointer;
+    border: 1px solid #000;
 }
 .memo-btn:active{
     transform: translateY(5px);
@@ -71,7 +75,10 @@ main{
     background:white;
     border-radius: 20px;
     padding: 20px 30px;
+    border: 1px solid #000;
 }
+
+/* 메모 section header */
 .memo-section .section-header{
     display:flex;
     margin-bottom: 30px;
@@ -90,6 +97,7 @@ main{
     cursor: pointer;
     box-shadow: 1px 1px 3px grey;
     transition: .2s;
+    border: 1px solid #000;
 }
 
 .memo-section .allmemo-delbtn:hover{
@@ -135,7 +143,7 @@ main{
     background-color: rgba(255,0,0,0.3);
 }
 
-/* memo item */
+/* savememo-section memo item */
 .memo-wrap{
     background-color: #ffd767;
     padding: 20px;
@@ -143,28 +151,24 @@ main{
     position: relative;
     box-shadow: 3px 3px 0 gray;
     word-break: break-all;
-}
-.memo-wrap header time{
-    font-size: 12px;
-    color: #4c4c4c;
-    flex-shrink: 0;
-}
-@media (max-width: 576px){
-    .memo-wrap header{
-        flex-direction: column;
-    }
-    .memo-wrap time{
-        align-self: flex-end;
-    }
-}
-.memo-wrap:not(:last-child){
-    margin-bottom: 20px;
+    border: 1px solid #000;
 }
 .memo-wrap header{
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.memo-wrap header time{
+    font-size: 12px;
+    color: #4c4c4c;
+    flex-shrink: 0;
+}
+
+.memo-wrap:not(:last-child){
+    margin-bottom: 20px;
+}
+
+/* 메모 삭제 버튼 */
 .memo-wrap .del-btn{
     position: absolute;
     right: -15px;
@@ -177,6 +181,7 @@ main{
     transition: .1s;
     cursor: pointer;
     box-shadow: 0px 1px 3px gray;
+    border: 1px solid #000;
 }
 .memo-wrap .del-btn::after{
     content: '\00d7';
@@ -193,8 +198,29 @@ main{
     box-shadow: 0 0 10px grey;
 }
 
+.memo-wrap .edit-btn{
+    padding: 5px 20px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid #000;
+    box-shadow: 2px 2px 0 gray;
+    cursor: pointer;
+}
+
+.memo-wrap .main-text{
+    min-height: 150px;
+}
 
 
-.memo-wrap .editing{
-    background-color: rgba(0,0,0,0.3);
+
+@media (max-width: 768px){
+    main{
+        padding: 10px;
+    }
+    .memo-wrap header{
+        flex-direction: column;
+    }
+    .memo-wrap time{
+        align-self: flex-end;
+    }
 }
