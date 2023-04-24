@@ -16,6 +16,7 @@ editor.getMarkdown();
 const memoBtn = document.querySelector(".memo-btn"),
     memoSection = document.querySelector(".savememo-section"),
     postText = document.querySelector(".toastui-editor-contents"),
+    userWritePostText = document.querySelector(".ProseMirror")
     titleText = document.querySelector(".title"),
     onfSwitch = document.querySelector(".onf-switch"),
     resetBtn = document.querySelector("[type='reset']")
@@ -36,14 +37,22 @@ function post() {
         inputMemo()
         memoSection.innerHTML = ''
         paintMemo()
+        titleText.value = ''
+        userWritePostText.innerText = ''
     }
+    
 }
 
 
 // 로컬 스토리지에 제목/내용 저장하는 함수
 function inputMemo(){
     const d = new Date(),
-        {...memo} = {title: titleText.value, posttext: postText.innerHTML, time: `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 ${d.getHours()}시${d.getMinutes()}분`, val: 0}
+        {...memo} = {
+            title: titleText.value, 
+            posttext: postText.innerHTML, 
+            time: `${d.getFullYear()}년 ${((d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1)}월 ${d.getDate()}일 ${d.getHours()}시${(d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes())}분`, 
+            val: 0
+        }
     if(onfSwitch.classList.contains("on")){
         allMemo.push({...memo})
     } else {
@@ -64,7 +73,7 @@ function paintMemo(){
                 <time>${item['time']}</time>
             </header>
             <p>${item['posttext']}</p>
-            <button class="del-btn" data-val="${idx}">X</button>
+            <button type="button" class="del-btn" data-val="${idx}" value="삭제" title="삭제하기"></button>
         </article>
         `
         )
@@ -107,6 +116,8 @@ onfSwitch.onclick = () => {
         allMemo.reverse()
     }
     memoSection.innerHTML = ''
+    idxSet()
+    localStorage.setItem("allMemo", JSON.stringify(allMemo))
     paintMemo()
 }
 

@@ -16,6 +16,16 @@ input{
     border:0;
 }
 
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+h1{
+    font-size: 2em
+}
+h2{
+    font-size: 1.5em
+}
 
 
 #editor{
@@ -23,7 +33,7 @@ input{
     border-radius: 10px;
 }
 main{
-    padding: 1vw min(30px, 3vw);
+    padding: 10px min(30px, 10vw);
     background: rgb(220, 195, 255);
     min-height: 100vh
 }
@@ -73,6 +83,7 @@ main{
     border-radius: 10px;
     position: relative;
     box-shadow: 3px 3px 0 gray;
+    word-break: break-all;
 }
 .memo-wrap:not(:last-child){
     margin-bottom: 20px;
@@ -84,15 +95,20 @@ main{
 }
 .memo-wrap .del-btn{
     position: absolute;
-    right: -10px;
-    top: -10px;
-    width: 30px;
-    height: 30px;
+    right: -15px;
+    top: -15px;
+    width: min(40px, 7vw);
+    height: min(40px, 7vw);
     border-radius: 50%;
     color: #fff;
     background-color: #dd5347;
     transition: .2s;
     cursor: pointer;
+}
+.memo-wrap .del-btn::after{
+    content: '\00d7';
+    width: 30px;
+    height: 30px;
 }
 
 .memo-wrap .del-btn:hover{
@@ -109,7 +125,6 @@ main{
 .onf-switch {
     position: relative;
     cursor: pointer;
-    display: inline-block;
     width: 58px;
     height: 28px;
     background: #fff;
