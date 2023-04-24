@@ -46,6 +46,7 @@ main{
     box-sizing: border-box;
 }
 
+/* 작성하기 버튼 */
 .memo-btn{
     color: #fff;
     font-size: 25px;
@@ -56,7 +57,7 @@ main{
     background-color: #8686ff;
     border-radius: 10px;
     box-shadow: 0 5px 2px rgba(0,0,0,0.3);
-    transition: .2s;
+    transition: .1s;
     cursor: pointer;
 }
 .memo-btn:active{
@@ -65,63 +66,38 @@ main{
     background-color: rgba(0,0,0,0.1);
 }
 
-
+/* 기록된 메모 section */
 .memo-section{
     background:white;
     border-radius: 20px;
     padding: 20px 30px;
 }
-.memo-section header{
+.memo-section .section-header{
     display:flex;
-    align-items: center;
-    gap: 24px;
     margin-bottom: 30px;
-}
-.memo-wrap{
-    background-color: #ffd767;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 3px 3px 0 gray;
-    word-break: break-all;
-}
-.memo-wrap:not(:last-child){
-    margin-bottom: 20px;
-}
-.memo-wrap header{
-    display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
 }
-.memo-wrap .del-btn{
-    position: absolute;
-    right: -15px;
-    top: -15px;
-    width: min(40px, 7vw);
-    height: min(40px, 7vw);
-    border-radius: 50%;
+.memo-section .switch-wrap{
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+.memo-section .allmemo-delbtn{
+    background-color: rgba(255,0,0,0.6);
+    border-radius: 15px;
+    padding: 10px 20px;
     color: #fff;
-    background-color: #dd5347;
-    transition: .2s;
     cursor: pointer;
-}
-.memo-wrap .del-btn::after{
-    content: '\00d7';
-    width: 30px;
-    height: 30px;
+    box-shadow: 1px 1px 3px grey;
+    transition: .2s;
 }
 
-.memo-wrap .del-btn:hover{
-    background: #f51d00;
+.memo-section .allmemo-delbtn:hover{
+    transform:scale(1.2);
+    background-color: rgba(255,0,0,0.8);
 }
 
-
-.wrapper {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-}
-
+/* onoff switch */
 .onf-switch {
     position: relative;
     cursor: pointer;
@@ -152,11 +128,73 @@ main{
 .onf-switch.on{
     background-color: rgba(255,0,0,0.3);
 }
-
-
 .onf-switch.on .onf-btn{
     left: 34px;
     background: #fff;
     box-shadow: 1px 2px 3px #00000020;
     background-color: rgba(255,0,0,0.3);
+}
+
+/* memo item */
+.memo-wrap{
+    background-color: #ffd767;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 3px 3px 0 gray;
+    word-break: break-all;
+}
+.memo-wrap header time{
+    font-size: 12px;
+    color: #4c4c4c;
+    flex-shrink: 0;
+}
+@media (max-width: 576px){
+    .memo-wrap header{
+        flex-direction: column;
+    }
+    .memo-wrap time{
+        align-self: flex-end;
+    }
+}
+.memo-wrap:not(:last-child){
+    margin-bottom: 20px;
+}
+.memo-wrap header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.memo-wrap .del-btn{
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: min(40px, 7vw);
+    height: min(40px, 7vw);
+    border-radius: 50%;
+    color: #fff;
+    background-color: #dd5347;
+    transition: .1s;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px gray;
+}
+.memo-wrap .del-btn::after{
+    content: '\00d7';
+    width: 30px;
+    height: 30px;
+}
+
+.memo-wrap .del-btn:hover{
+    background: #f51d00;
+    transform:scale(1.1);
+}
+.memo-wrap .del-btn:active{
+    transform: scale(1);
+    box-shadow: 0 0 10px grey;
+}
+
+
+
+.memo-wrap .editing{
+    background-color: rgba(0,0,0,0.3);
 }
