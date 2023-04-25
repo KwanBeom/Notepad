@@ -29,8 +29,10 @@ paintMemo()
 function post() {
     if(titleText.value === ''){
         alert("제목을 작성해주세요")
+        titleText.focus()
     } else if(postText.innerText === ''){
         alert("내용을 작성해주세요")
+        userWritePostText.focus()
     } else {
         inputMemo()
         memoSection.innerHTML = ''
@@ -89,16 +91,16 @@ function paintMemo(){
 }
 
 // 순서대로 allMemo 배열 val키에 index 값 넣어주는 함수
-function idxSet(){
+function idxSet(){ 
     allMemo.forEach((item, idx) => {
-        item.val = idx
+        item.val = idx 
     })
 }
 
 // target 이벤트 등록
 memoSection.addEventListener("click", function(e){
     if(e.target.dataset.val !== undefined){
-        dele(e.target.dataset.val)
+        dele(e.target.dataset.val) 
         memoSection.innerHTML = ''
         idxSet()
         paintMemo()
@@ -106,7 +108,7 @@ memoSection.addEventListener("click", function(e){
     if(e.target.classList.value === "edit-btn"){
         edit(e)
         memoSection.innerHTML = ''
-        idxSet()
+        idxSet() 
         paintMemo()
     }    
 })
@@ -114,7 +116,7 @@ memoSection.addEventListener("click", function(e){
 // filter 메서드 이용 배열 삭제해서 리턴해주는 함수
 function dele(val) {
     allMemo = allMemo.filter(item => {
-        return item.val != val
+        return item.val != val // 이건 배열에서 삭제해서 리턴해주는거고
     })
     localStorage.setItem('allMemo', JSON.stringify(allMemo))
 }
@@ -127,6 +129,8 @@ function edit(clickedItem){
         allMemo.splice(Number(clickedItem.target.dataset.editval), 1)
     }else{
         alert("현재 작성중인 메모를 작성해주세요!")
+        userWritePostText.focus()
+        window.scrollTo(0, 0)
     }
 }
 
@@ -151,3 +155,29 @@ resetBtn.onclick = () => {
     memoSection.innerHTML = ''
 }
 
+// 스크롤 탑
+function scrollTop() {
+    const between = 1; // 이동 간격 시간
+    const scroll = window.setInterval(function () {
+    const pos = window.pageYOffset;
+    const step = 50; // 이동 크기 픽셀
+        if (pos > 0) {
+            window.scrollTo(0, pos - step);
+        } else {
+            window.clearInterval(scroll);
+        }
+    }, between);
+}
+
+document.querySelector(".scrolltop").onclick = () => {
+    scrollTop()
+}
+
+// 탑 버튼 애니메이션
+window.addEventListener('scroll', () => {
+    if(document.documentElement.scrollTop >= 700){
+        document.querySelector('.scrolltop').style.top = "10px"
+    } else {
+        document.querySelector('.scrolltop').style.top = ''
+    }
+})

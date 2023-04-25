@@ -215,6 +215,28 @@ main{
     min-height: 150px;
 }
 
+.scrolltop{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: -70px;
+    box-shadow: 0 0 10px gray;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: min(3vw, 20px);
+    border-radius: 50%;
+    transition: .2s;
+    background-color: #fff;
+    cursor: pointer;
+}
+.scrolltop:hover{
+    background-color: rgba(255,255,255, 0.9);
+}
+
 @media (max-width: 768px){
     main{
         padding: 10px;
