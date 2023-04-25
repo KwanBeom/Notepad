@@ -215,13 +215,12 @@ main{
     min-height: 150px;
 }
 
-
 @media (max-width: 768px){
     main{
         padding: 10px;
     }
     .memo-wrap header{
-        flex-direction: column;
+        flex-direction: column; 
     }
     .memo-wrap time{
         align-self: flex-end;

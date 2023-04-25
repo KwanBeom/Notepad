@@ -11,7 +11,6 @@ const editor = new Editor({
 editor.getMarkdown();
 
 // 메모장 기능 script
-
 const memoBtn = document.querySelector(".memo-btn"),
     memoSection = document.querySelector(".savememo-section"),
     postText = document.querySelector(".toastui-editor-contents"),

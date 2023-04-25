@@ -13,4 +13,4 @@ JavaScript로 메모장 기능 구현
 ## 수정예정
 - table border 설정
 - 마크다운 체크박스 확인
-- section에 제목태그 추가
+- section에 제목태그 추가 필요
